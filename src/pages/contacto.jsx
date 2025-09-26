@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { sendContact } from "../services/email.js"; // 👈 import servicio
 
 const initialValues = { nombre: "", email: "", mensaje: "" };
 
@@ -31,11 +32,11 @@ export default function Contacto() {
 
     try {
       setSending(true);
-      // Simulación de envío (sin EmailJS aún)
-      await new Promise((res) => setTimeout(res, 800));
+      await sendContact(values); // 👈 envío real por EmailJS
       setStatus("ok");
       setValues(initialValues);
-    } catch {
+    } catch (err) {
+      console.error("EmailJS error:", err?.status, err?.text); // 👈 esto muestra el motivo exacto
       setStatus("error");
     } finally {
       setSending(false);
@@ -112,12 +113,12 @@ export default function Contacto() {
 
       {status === "ok" && (
         <div role="status" className="toast success">
-          ✅ ¡Mensaje enviado! (simulado). En el próximo paso lo mandamos por EmailJS.
+          ✅ ¡Mensaje enviado correctamente!
         </div>
       )}
       {status === "error" && (
         <div role="alert" className="toast error">
-          ❌ Ocurrió un error al enviar.
+          ❌ Ocurrió un error al enviar. Revisá tu configuración de EmailJS.
         </div>
       )}
     </section>

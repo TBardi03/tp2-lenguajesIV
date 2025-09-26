@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <header className="navbar">
+    <header className="Navbar">
       <nav className="nav">
         <NavLink to="/" className="brand">
           TP3 – Lenguajes IV
@@ -14,7 +14,7 @@ export default function Navbar() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/contacto" className={({ isActive }) => (isActive ? "active" : undefined)}>
+            <NavLink to="/Contacto" className={({ isActive }) => (isActive ? "active" : undefined)}>
               Contacto
             </NavLink>
           </li>

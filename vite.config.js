@@ -3,5 +3,5 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/tp2-lenguajesIV/", // 👈 importante: nombre EXACTO del repo en GitHub
+  base: "/tp3-lenguajesIV/", // 👈 importante: nombre EXACTO del repo en GitHub
 });
